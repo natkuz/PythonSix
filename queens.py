@@ -8,7 +8,8 @@
 
 from random import randint
 
-def quenns(coord_queens: tuple) -> bool:
+def queens() -> bool:
+    coord_queens = _gen_queens()
     coord_queens_dict = {i: list(coord_queens[i]) for i in range(len(coord_queens))}
 
     count_row = count_col = count_diag = 0
@@ -57,22 +58,22 @@ def quenns(coord_queens: tuple) -> bool:
     return True
 
 
-def gen_queens():
-    queens = {i: (i + 1, randint(1, 9)) for i in range(8)}
-    return queens
+def _gen_queens():
+    queens = ((i + 1, randint(1, 9)) for i in range(8))
+    return tuple(queens)
 
 
-coord_queens = ((1, 6), (2, 2), (3, 7), (4, 1), (5, 4), (6, 8), (7, 5), (8, 3))
-print(quenns(coord_queens))
-coord_queens = ((1, 1), (2, 5), (3, 8), (4, 6), (5, 3), (6, 7), (7, 2), (8, 4))
-print(quenns(coord_queens))
-coord_queens = ((1, 3), (2, 5), (3, 2), (4, 8), (5, 1), (6, 7), (7, 4), (8, 6))
-print(quenns(coord_queens))
-coord_queens = ((1, 2), (2, 6), (3, 8), (4, 3), (5, 1), (6, 4), (7, 7), (8, 5))
-print(quenns(coord_queens))
+# coord_queens = ((1, 6), (2, 2), (3, 7), (4, 1), (5, 4), (6, 8), (7, 5), (8, 3))
+# print(queens(coord_queens))
+# coord_queens = ((1, 1), (2, 5), (3, 8), (4, 6), (5, 3), (6, 7), (7, 2), (8, 4))
+# print(queens(coord_queens))
+# coord_queens = ((1, 3), (2, 5), (3, 2), (4, 8), (5, 1), (6, 7), (7, 4), (8, 6))
+# print(queens(coord_queens))
+# coord_queens = ((1, 2), (2, 6), (3, 8), (4, 3), (5, 1), (6, 4), (7, 7), (8, 5))
+# print(queens(coord_queens))
 
 
-print(gen_queens())
-print(quenns(gen_queens()))
-print(gen_queens())
-print(quenns(gen_queens()))
+print(_gen_queens())
+print(queens())
+print(_gen_queens())
+print(queens())
